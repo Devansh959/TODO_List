@@ -1,0 +1,78 @@
+<html>
+    <head>
+    <title>
+        TASKATIA
+    </title>
+    <link rel="icon" type="image/x-icon" href="https://cdn2.iconfinder.com/data/icons/operational-excellence/96/task_importance_schedule_book-512.png">
+    <link rel="stylesheet" type="text/css" href="/css/todo.css">
+
+    </head>
+    <body>
+        <div id="heading">
+            <h1>TODO APP</h1>
+        </div>
+        <form action="/create-task" method="post">
+            <table id="entry">
+                <tr>
+                    <td colspan="2">
+                        <label id="label" for="des">DESCRIPTION</label>
+                        <input type="text" placeholder="what do you need to do?" name="description" id="des" required>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label id="label" for="cat">Choose a Category:</label>
+
+                            <select name="category" id="cat">
+                            <option value="Personal">Personal</option>
+                            <option value="Work">Work</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Other">Other</option>
+                            </select>
+                        
+                    </td>
+                    <td>
+                        <label id="label" for="dat">DUE DATE</label>
+                        <input type="date" placeholder="dd/mm/yyyy" name="date" id="dat" required>
+                        
+                        
+                    </td>
+                    
+
+                </tr>
+            </table>
+            <div id="action">
+                <button class="action" type="submit"><i class="fa-solid fa-plus"></i>   Add Task</button>
+                
+            </div>
+        </form>
+        
+        <ul>
+            <% for (let i of task_list){ %>
+                <li>
+                    <div id="listItem">
+                        <a href="/delete-Contact/?id=<%=i._id%>"><button class="action" id="delete" ><i class="fa-solid fa-trash"></i>  Delete Task</button></i></a>
+                        
+                        
+                        <input type="checkbox" id="task">
+                        <label for="task">
+                        <span id="task1">
+                            Task:&nbsp&nbsp<%=i.description%>
+                        </span>
+                        
+                        <p>
+                            Category:&nbsp&nbsp<%=i.category%>
+                        </p>
+                        <p>
+                            Date:&nbsp&nbsp<%=i.date%>
+                        </p></label>
+                        
+                    </div>
+
+                </li>
+            <%}%>
+        </ul>
+        <script src="https://kit.fontawesome.com/c11a9b9690.js" crossorigin="anonymous"></script>
+    </body>
+</html>
